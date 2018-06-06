@@ -6,7 +6,7 @@
 >Pull all changes, make sure your repository is up to date
 
 ```sh
-$ cd codeChallenge05018
+$ cd USSDCodeChallenge
 $ git pull origin master
 ```
 
