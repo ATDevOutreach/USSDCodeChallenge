@@ -34,19 +34,19 @@
 - More on [Logging in, Signing up/Registration, Verifying/Activating your account, Managing Teams and applications](http://help.africastalking.com/website)
 - Videos on getting started [on the Africa's Talking Sandbox](https://www.dropbox.com/sh/qq086503d5zaq7l/AADEo-oazNF_PgYIPRjPpeCua?dl=0)
 - USSD Example Apps:
- [PHP](https://github.com/JaniKibichi/microfinance-ussd-app), 
- [Python-Django](https://github.com/RuthNjeri/Microfinance-ussd-django), 
- [Python-Flask](https://github.com/Piusdan/USSD-Python-Demo),
- [Ruby-Sinatra](https://github.com/JaniKibichi/sandbox-manenos/tree/master/ussd-rb), 
- [Spark-Java](https://github.com/JaniKibichi/sandbox-manenos/tree/master/ussd-java)
+    - [PHP](https://github.com/JaniKibichi/microfinance-ussd-app), 
+    - [Python-Django](https://github.com/RuthNjeri/Microfinance-ussd-django), 
+    - [Python-Flask](https://github.com/Piusdan/USSD-Python-Demo),
+    - [Ruby-Sinatra](https://github.com/JaniKibichi/sandbox-manenos/tree/master/ussd-rb), 
+    - [Spark-Java](https://github.com/JaniKibichi/sandbox-manenos/tree/master/ussd-java)
 
 #### About Africa's Talking Code Challenges
 Please read the overview [here.](http://atdevoutreach.viewdocs.io/USSDCodeChallenge/)
 
 ### Steps:
-1. Head over to the code challenge [here](http://atdevoutreach.viewdocs.io/codeChallengeGaming05018/CodeChallengeGaming05018/) to get acquainted.
+1. Head over to the code challenge [here](http://atdevoutreach.viewdocs.io/USSDCodeChallenge/USSDCodeChallenge/) to get acquainted.
 
-2.  Check out the format for submitting your code [here](http://atdevoutreach.viewdocs.io/codeChallengeGaming05018/CodeChallengeGamingSteps/)
+2.  Check out the format for submitting your code [here](http://atdevoutreach.viewdocs.io/USSDCodeChallenge/USSDCodeChallengeSteps/)
 
 3.  Make sure when creating a branch to use your correct phone Number, as this is what we will use to get back to you.
 > NB: As a branch-name you can also use your email.
