@@ -4,6 +4,7 @@
 
 #### Task
 - Create a USSD application, using the [Africa's Talking API](https://africastalking.com/) and [Simulator](), that has the following menus and sub menus:
+
 | Menu           | Sub menu      | Cool  |
 | -------------- |:-------------:| -----:|
 | My Cooperative | Check Balance |       |
@@ -19,6 +20,7 @@
 |Join Agbetuntu  |               |       |
 |                |               |       |
 |Request a Call  |               |       |
+
 
 - Generate a USSD channel on the Sandbox and create your USSD App from [the USSD API](http://docs.africastalking.com/ussd)
 - Connect the USSD Application to a database of your choice for maintaining state
