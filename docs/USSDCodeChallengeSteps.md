@@ -13,21 +13,21 @@ $ git pull origin master
 >Create a new branch as follows-> git checkout -b [your_phone_number], e.g.
 
 ```sh
-$ git checkout -b 254787235065 master
+$ git checkout -b 2348177779360 master
 ```
 
 >See all branches created
 
 ```sh
 $ git branch
-* 254787235065
+* 2348177779360
   master
 ```
 
 >Push the new branch to github
 
 ```sh
-$ git push origin -u 254787235065
+$ git push origin -u 2348177779360
 ```
 
 3.Make changes to the fork following the CodeChallenge provided.
