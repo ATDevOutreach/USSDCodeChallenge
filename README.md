@@ -63,6 +63,7 @@ You can participate on as many challenges as you wish:
     - [Ruby-Sinatra](https://github.com/JaniKibichi/sandbox-manenos/tree/master/ussd-rb), 
     - [Spark-Java](https://github.com/JaniKibichi/sandbox-manenos/tree/master/ussd-java)
 - [Medium Post on Building USSD Apps using JS + Africa's Talking APIs](https://medium.com/@jalasem/ussd-app-development-with-javascript-a59554e16a03)
+- [Medium Post on USSD+BankPayments+Airtime APIs on Africa's Talking for Nigeria](https://medium.com/@lizkathure/68f9503bed81)
 
 ## About Africa's Talking Code Challenges
 Please read the overview [here.](http://atdevoutreach.viewdocs.io/USSDCodeChallenge/)
