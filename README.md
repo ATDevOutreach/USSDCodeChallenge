@@ -1,8 +1,24 @@
 # USSD Code Challenge
-## Due: 11th June or Earlier
-#### This code challenge is due on the 11th of June or earlier. 
+## Due: 15th June or Earlier
+#### This code challenge is due on the 15th of June or earlier. 
 
-#### Task
+## Simple Unchanging Rules
+The code challenge is and will always be judged using the following criteria
+  - A Correct fork, branch and pull request
+  - Using the GitHub Pull Request Time Stamp, the first developer whose code runs successfully on the sandbox/simulator wins
+  - Other developers who submit successfully MAY also get rewarded with secondary items
+  - Code quality and structure will also be considered
+  - The order for pull requests will be followed, first come first win basis!
+
+## Terms and Conditions
+You can participate on as many challenges as you wish:
+  - Africa's Talking reserves the right to announce the winners
+  - Code Challenges are time bound - the time restriction is specified on the challenge
+  - Additional rules MAY be provided on the code challenge and will vary for each challenge
+  - You are free to use all manner of tools
+  - Successive interviews for projects MAY be run to satisfy participating Africa's Talking Partners
+
+## Task
 - Create a USSD application, using the [Africa's Talking API](https://africastalking.com/) and [Simulator](), that has the following menus and sub menus:
 
 | Menu           | Sub menu      |  

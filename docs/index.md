@@ -19,16 +19,17 @@ Winners can expect great rewards including but not limited to:
 
 ## Simple Unchanging Rules
 The code challenge is and will always be judged using the following criteria
-  - Correct fork, branch and pull request
-  - First 1-10 developers whose code runs successfully on the sandbox win
-  - In case only one winner can be had, code quality and structure will also be considered
+  - A Correct fork, branch and pull request
+  - Using the GitHub Pull Request Time Stamp, the first developer whose code runs successfully on the sandbox/simulator wins
+  - Other developers who submit successfully MAY also get rewarded with secondary items
+  - Code quality and structure will also be considered
   - The order for pull requests will be followed, first come first win basis!
 
 ## Terms and Conditions
-You can participate on as many challenges as you will:
+You can participate on as many challenges as you wish:
   - Africa's Talking reserves the right to announce the winners
-  - Code Challenges are time bound
-  - Additional rules will be provided on the code challenge and will vary for each challenge
+  - Code Challenges are time bound - the time restriction is specified on the challenge
+  - Additional rules MAY be provided on the code challenge and will vary for each challenge
   - You are free to use all manner of tools
 
 ## Slack
