@@ -5,9 +5,9 @@
 ## Simple Unchanging Rules
 The code challenge is and will always be judged using the following criteria
   - A Correct fork, branch and pull request
-  - Using the GitHub Pull Request Time Stamp, the first developer whose code runs successfully on the sandbox/simulator wins
+  - Using the GitHub Pull Request Time Stamp and correct code quality & structure, the first developer whose code runs successfully on the sandbox/simulator wins
   - Other developers who submit successfully MAY also get rewarded with secondary items
-  - Code quality and structure will also be considered
+  - Code quality and structure will be evaluated
   - The order for pull requests will be followed, first come first win basis!
 
 ## Terms and Conditions
@@ -17,6 +17,11 @@ You can participate on as many challenges as you wish:
   - Additional rules MAY be provided on the code challenge and will vary for each challenge
   - You are free to use all manner of tools
   - Successive interviews for projects MAY be run to satisfy participating Africa's Talking Partners
+
+## Code Challenge Bounty:
+  - Project worth 300$ for USSD App creation + Deployment
+  - Possible developer job based on completion of USSD App
+  - Airtime and Swag for the first 100 successful participants
 
 ## Task
 - Create a USSD application, using the [Africa's Talking API](https://africastalking.com/) and [Simulator](), that has the following menus and sub menus:
@@ -55,6 +60,7 @@ You can participate on as many challenges as you wish:
     - [Python-Flask](https://github.com/Piusdan/USSD-Python-Demo),
     - [Ruby-Sinatra](https://github.com/JaniKibichi/sandbox-manenos/tree/master/ussd-rb), 
     - [Spark-Java](https://github.com/JaniKibichi/sandbox-manenos/tree/master/ussd-java)
+- [Medium Post on Building USSD Apps using JS + Africa's Talking APIs](https://medium.com/@jalasem/ussd-app-development-with-javascript-a59554e16a03)
 
 #### About Africa's Talking Code Challenges
 Please read the overview [here.](http://atdevoutreach.viewdocs.io/USSDCodeChallenge/)
