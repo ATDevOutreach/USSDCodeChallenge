@@ -48,8 +48,10 @@ You can participate on as many challenges as you wish:
 - Implement the [Bank checkout API from Africa's Talking](http://docs.africastalking.com/bank/checkout) in the USSD App
 - Implement the [voice API from Africa's Talking](http://docs.africastalking.com/voice)
 - Run the application on [the Africa's Talking Simulator](https://simulator.africastalking.com:1517/)
+- Use the format for submitting your code outlined [here](http://atdevoutreach.viewdocs.io/USSDCodeChallenge/USSDCodeChallengeSteps/) to submit your solution
+- Make sure when creating a branch to use your correct phone Number, as this is what we will use to get back to you. NB: As a branch-name you can also use your email.
 
-#### Resources
+## Resources
 - FAQs on Setting up the [Voice API](http://help.africastalking.com/voice)
 - FAQs on setting up the [USSD API](http://help.africastalking.com/ussd)
 - More on [Logging in, Signing up/Registration, Verifying/Activating your account, Managing Teams and applications](http://help.africastalking.com/website)
@@ -62,17 +64,9 @@ You can participate on as many challenges as you wish:
     - [Spark-Java](https://github.com/JaniKibichi/sandbox-manenos/tree/master/ussd-java)
 - [Medium Post on Building USSD Apps using JS + Africa's Talking APIs](https://medium.com/@jalasem/ussd-app-development-with-javascript-a59554e16a03)
 
-#### About Africa's Talking Code Challenges
+## About Africa's Talking Code Challenges
 Please read the overview [here.](http://atdevoutreach.viewdocs.io/USSDCodeChallenge/)
 
-### Steps:
-1. Head over to the code challenge [here](http://atdevoutreach.viewdocs.io/USSDCodeChallenge/USSDCodeChallenge/) to get acquainted.
 
-2.  Check out the format for submitting your code [here](http://atdevoutreach.viewdocs.io/USSDCodeChallenge/USSDCodeChallengeSteps/)
-
-3.  Make sure when creating a branch to use your correct phone Number, as this is what we will use to get back to you.
-> NB: As a branch-name you can also use your email.
-> See you on the other side, and best of luck!
-
-## Slack
+## Get Support on the Africa's Talking Slack
 In case you have any questions, join our Slack [here](https://slackin-africastalking.now.sh/)
