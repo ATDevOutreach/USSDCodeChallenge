@@ -1,4 +1,4 @@
-# USSD Code Challenge
+# USSD Code Challenge [Lagos, Nigeria]
 ## Due: 15th June 2018 or Earlier
 #### This code challenge is due on the 15th of June or earlier. 
 
@@ -12,6 +12,7 @@ The code challenge is and will always be judged using the following criteria
 
 ## Terms and Conditions
 You can participate on as many challenges as you wish:
+  - Everyone can participate for secondary prices, BUT the winner must reside in Lagos, and have Nigerian citizenship 
   - Africa's Talking reserves the right to announce the winners
   - Code Challenges are time bound - the time restriction is specified on the challenge
   - Additional rules MAY be provided on the code challenge and will vary for each challenge
