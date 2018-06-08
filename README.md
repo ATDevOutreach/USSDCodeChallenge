@@ -1,5 +1,5 @@
 # USSD Code Challenge
-## Due: 15th June or Earlier
+## Due: 15th June 2018 or Earlier
 #### This code challenge is due on the 15th of June or earlier. 
 
 ## Simple Unchanging Rules
@@ -24,7 +24,7 @@ You can participate on as many challenges as you wish:
   - Airtime and Swag for the first 100 successful participants
 
 ## Task
-- Create a USSD application, using the [Africa's Talking API](https://africastalking.com/) and [Simulator](), that has the following menus and sub menus:
+- Create a USSD application, using the [Africa's Talking API](https://africastalking.com/) and [Simulator](https://simulator.africastalking.com:1517/), that has the following menus and sub menus:
 
 | Menu           | Sub menu      |  
 | -------------- |:-------------:|  
