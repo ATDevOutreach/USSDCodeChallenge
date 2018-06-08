@@ -6,7 +6,7 @@ Our world-class infrastructure is created for developers and relied upon by busi
 ### Steps to follow:
 To join this challenge:
   - Got to our GitHub Developer Relations Page and [Fork the USSD Code Challenge](https://github.com/ATDevOutreach/USSDCodeChallenge)
-  - Read the challenge [here](http://atdevoutreach.viewdocs.io/USSDCodeChallenge/USSDCodeChallenge/)
+  - Read the challenge [there](https://github.com/ATDevOutreach/USSDCodeChallenge)
   - Follow the steps to submit your code [here](http://atdevoutreach.viewdocs.io/USSDCodeChallenge/USSDCodeChallengeSteps/)
 
 ## About the Code Challenge:
