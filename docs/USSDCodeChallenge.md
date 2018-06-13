@@ -1,6 +1,6 @@
 # USSD Code Challenge
-## Due: 11th June or Earlier
-#### This code challenge is due on the 11th of June or earlier. 
+## Due: 22nd June, 2018 or Earlier
+#### This code challenge is due on the 22nd of June, 2018 or earlier. 
 
 #### Task
 - Create a USSD application, using the [Africa's Talking API](https://africastalking.com/) and [Simulator](), that has the following menus and sub menus:

@@ -1,6 +1,6 @@
 # USSD Code Challenge [Lagos, Nigeria]
-## Due: 15th June 2018 or Earlier
-#### This code challenge is due on the 15th of June or earlier. 
+## Due: 22nd June 2018 or Earlier
+#### This code challenge is due on the 22nd of June or earlier. 
 
 ## Simple Unchanging Rules
 The code challenge is and will always be judged using the following criteria
@@ -9,11 +9,14 @@ The code challenge is and will always be judged using the following criteria
   - Other developers who submit successfully MAY also get rewarded with secondary items
   - Code quality and structure will be evaluated
   - The order for pull requests will be followed, first come first win basis!
+  - Do not share any code that you cannot opensource on the Git Repository as its open source and Africa's Talking will not be liable for any breach of intellectual property (if any) once shared on the platform.
 
 ## Terms and Conditions
 You can participate on as many challenges as you wish:
   - Everyone can participate for secondary prices, BUT the winner must reside in Lagos, and have Nigerian citizenship 
   - Africa's Talking reserves the right to announce the winners
+  - Africa's Talking reserves the right to reward the winners based on Africa's Talking Criterion
+  - Do not share any code that you cannot opensource on the Git Repository as its open source and Africa's Talking will not be liable for any breach of intellectual property (if any) once shared on the platform.
   - Code Challenges are time bound - the time restriction is specified on the challenge
   - Additional rules MAY be provided on the code challenge and will vary for each challenge
   - You are free to use all manner of tools
