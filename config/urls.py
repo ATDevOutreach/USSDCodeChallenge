@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-import views
+from ussd_app import views
 
 urlpatterns = [
     url(r'', views.process_ussd, name="process_ussd"),
