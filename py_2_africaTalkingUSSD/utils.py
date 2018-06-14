@@ -30,7 +30,6 @@ class AfricasTalkingUtils:
         except AfricasTalkingGatewayException, e:
             print 'Encountered an error while sending: %s' % str(e)
 
-africa_talking = AfricasTalkingUtils()
-fff=africa_talking.bank_checkout()
-import pdb; pdb.set_trace()
-pass        
+    def ussd(self, service_code, session_id, phone_number, text):
+        import pdb; pdb.set_trace()
+        
