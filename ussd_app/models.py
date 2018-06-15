@@ -74,8 +74,9 @@ class Transaction(models.Model):
         (PAYED, 'Payed'),
         (NOT_PAYED, 'Not Payed'),
         (DECLINED, 'Declined')
+        (APPROVED, 'Approved')
     )
-    trans_id = models.CharField(max_length=255, null=True)
+    trans_id = models.CharField(max_length=255, null=True, default='12345')
     status=models.CharField(max_length=30,null=True, choices=STATUS_TYPE)
     account = models.ForeignKey(Account, related_name="transaction")
     type = models.CharField(max_length=30, null=True, choices=TRANSACTION_TYPES)
