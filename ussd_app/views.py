@@ -17,8 +17,7 @@ def process_ussd(request):
         text = request.POST.get('text')
 
         africa_talking = AfricasTalkingUtils()
-        import pdb; pdb.set_trace()
-        ussd_response = africa_talking.get_ussd_response(text)
+        response = africa_talking.get_ussd_response(text)
     else:
         response = "Ooops, Sorry..."
         
