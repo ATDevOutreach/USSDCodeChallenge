@@ -32,14 +32,14 @@ class AfricasTalkingUtils:
         #Specify your credentials
         self.username = "sandbox"
         self.apiKey   = "93c1f491be8e3480265075a1b207cefc7601c36e06d66cc1a178aba7df633832"
-        self.phonenumber = kwargs['phonenumber']
-        self.callerNumber = kwargs['callerNumber']
-        self.is_active = kwargs['isActive']
-        self.duration_in_seconds = kwargs['durationInSeconds']
+        self.phonenumber = kwargs.get('phonenumber')
+        self.callerNumber = kwargs.get('callerNumber')
+        self.is_active = kwargs.get('isActive')
+        self.duration_in_seconds = kwargs.get('durationInSeconds')
         self.currency_code = kwargs.get('currencyCode')
         self.amount = kwargs.get('amount')
 
-        self.customer = models.Account.get_current_customer(kwargs['phonenumber'])
+        self.customer = models.Account.get_current_customer(kwargs.get('phonenumber'))
         #Create an instance of our awesome gateway class and pass your credentials
         self.gateway = AfricasTalkingGateway(self.username, self.apiKey)
 
