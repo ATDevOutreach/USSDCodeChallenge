@@ -73,7 +73,7 @@ class Transaction(models.Model):
         (CONCLUDED, 'Concluded'),
         (PAYED, 'Payed'),
         (NOT_PAYED, 'Not Payed'),
-        (DECLINED, 'Declined')
+        (DECLINED, 'Declined'),
         (APPROVED, 'Approved')
     )
     trans_id = models.CharField(max_length=255, null=True, default='12345')
