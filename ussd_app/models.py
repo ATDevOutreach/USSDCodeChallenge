@@ -27,7 +27,10 @@ class Account(models.Model):
 
     @classmethod
     def get_current_customer(cls, phonenumber):
-        customer = cls.objects.get(phonenumber=phonenumber)
+        try:
+            customer = cls.objects.get(phonenumber=phonenumber)
+        except:
+            customer = None
         return customer
     
     @classmethod

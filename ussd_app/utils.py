@@ -154,100 +154,113 @@ class AfricasTalkingUtils:
         elif kwargs['text'] == JOIN_AGBETUNTU:
             response = "CON Welcome to Agbetuntu"
         
-        elif kwargs['text'] == REQUEST_A_CALL or kwargs['text'] == REQUEST_A_CALL_2:
-            # trigger call api
-            response = "Your Request has been recorded, An agent will call soon! #CHEERS "
+        # elif kwargs['text'] == REQUEST_A_CALL or kwargs['text'] == REQUEST_A_CALL_2:
+        #     # trigger call api
+        #     response = "Your Request has been recorded, An agent will call soon! #CHEERS "
         elif kwargs['text'].startswith(REQUEST_LOAN):
             # request a loan
-            if len(kwargs['text'].split('*')) == 3:
-                amount=kwargs['text'].split('*')[2]
-                response = "END An Agent will process your request and get back to you by text, \n"
-                response += "Enjoy Yourself!"
-                models.Transaction.record(
-                            account=self.customer,
-                            type=models.Transaction.LOAN,
-                            status=models.Transaction.PENDING,
-                            amount=amount
-                        )
+            if self.customer:
+                if len(kwargs['text'].split('*')) == 3:
+                    amount=kwargs['text'].split('*')[2]
+                    response = "END An Agent will process your request and get back to you by text, \n"
+                    response += "Enjoy Yourself!"
+                    models.Transaction.record(
+                                account=self.customer,
+                                type=models.Transaction.LOAN,
+                                status=models.Transaction.PENDING,
+                                amount=amount
+                            )
+                else:
+                    response = "CON Please specify the amount for the loan: \n"
             else:
-                response = "CON Please specify the amount for the loan: \n"
+                response = "END You are not a registered user, please register and try again.\n"
                 
         elif kwargs['text'].startswith(REQUEST_LOAN_2):
-            if len(kwargs['text'].split('*')) == 3:
-                narration = 'Loan from Wazobia group'
-                access_code=kwargs['text'].split('*')[2]
-                trans = models.Transaction.check_loan_validity(
-                                        access_code=access_code,
-                                        phonenumber=self.phonenumber)
-                if trans:
-                    recipients_list = [
-                        dict(account_name=self.customer.account_name, account_num=self.customer.account_number, 
-                        bank_code=self.customer.bank_code, amount=int(trans.amount), narration=narration, reference_id=access_code, office_branch='201'),
-                    ]
-                    pay_status = self.pay_customers(recipients_list=recipients_list)
-                    if pay_status:
-                        balance, loan = trans.received_loan()
-                        response = "END Your Loan Deposit is being processed. You will receive it shortly. \n"
-                        response += "Balance: {} \n".format(balance)
-                        response += "Loan: {} \n".format(loan)
-                        response += "Enjoy Yourself!"
+            if self.customer:
+                if len(kwargs['text'].split('*')) == 3:
+                    narration = 'Loan from Wazobia group'
+                    access_code=kwargs['text'].split('*')[2]
+                    trans = models.Transaction.check_loan_validity(
+                                            access_code=access_code,
+                                            phonenumber=self.phonenumber)
+                    if trans:
+                        recipients_list = [
+                            dict(account_name=self.customer.account_name, account_num=self.customer.account_number, 
+                            bank_code=self.customer.bank_code, amount=int(trans.amount), narration=narration, reference_id=access_code, office_branch='201'),
+                        ]
+                        pay_status = self.pay_customers(recipients_list=recipients_list)
+                        if pay_status:
+                            balance, loan = trans.received_loan()
+                            response = "END Your Loan Deposit is being processed. You will receive it shortly. \n"
+                            response += "Balance: {} \n".format(balance)
+                            response += "Loan: {} \n".format(loan)
+                            response += "Enjoy Yourself!"
+                        else:
+                            response = "END Your Request was not successful \n"
+                            response += "Please try again later {} \n".format(balance)
                     else:
-                        response = "END Your Request was not successful \n"
-                        response += "Please try again later {} \n".format(balance)
+                        response = "END Your Access Code is invalid.\n"
+                        response += "Please try again.\n"
+                        
                 else:
-                    response = "END Your Access Code is invalid.\n"
-                    response += "Please try again.\n"
-                    
+                    response = "CON Please enter your loan access code to accept the loan requested.\n"
             else:
-                response = "CON Please enter your loan access code to accept the loan requested.\n"
-            
+                response = "END You are not a registered user, please register and try again.\n"
+                    
         # sub menu
         ## check balance Done
         elif kwargs['text'] == CHECK_BALANCE :
             # return user balance
-            response = "CON Balance: {}\n".format(self.customer.balance)
-            response = "Loan: {}\n".format(self.customer.balance)
+            if self.customer:
+                response = "CON Balance: {}\n".format(self.customer.balance)
+                response = "Loan: {}\n".format(self.customer.balance)
+            else:
+                response = "END You are not a registered user, please register and try again.\n"
+                
 
         ## make deposit Done
         elif kwargs['text'].startswith(MAKE_DEPOSIT):
-            if len(kwargs['text'].split('*')) == 3:
-                amount=kwargs['text'].split('*')[2] 
-                if self.customer:
-                    narration = 'Deposit by {}'.format(self.customer.phonenumber)
-                    deposit = self.bank_checkout(
-                                amount=amount, 
-                                narration=narration,
-                                account_name=self.customer.account_name, 
-                                account_num=self.customer.account_number, 
-                                bank_code=self.customer.bank_code)
-                    if deposit:
-                        models.Transaction.record(
-                            account=self.customer,
-                            type=models.Transaction.DEPOSIT,
-                            trans_id=deposit,
-                            status=models.Transaction.PENDING,
-                            amount=amount
-                        )
-                        response = "CON Please enter OTP sent to your phone,\n";
+            if self.customer:
+                if len(kwargs['text'].split('*')) == 3:
+                    amount=kwargs['text'].split('*')[2] 
+                    if self.customer:
+                        narration = 'Deposit by {}'.format(self.customer.phonenumber)
+                        deposit = self.bank_checkout(
+                                    amount=amount, 
+                                    narration=narration,
+                                    account_name=self.customer.account_name, 
+                                    account_num=self.customer.account_number, 
+                                    bank_code=self.customer.bank_code)
+                        if deposit:
+                            models.Transaction.record(
+                                account=self.customer,
+                                type=models.Transaction.DEPOSIT,
+                                trans_id=deposit,
+                                status=models.Transaction.PENDING,
+                                amount=amount
+                            )
+                            response = "CON Please enter OTP sent to your phone,\n";
+                        else:
+                            response = "END Your Deposite was not successful, please try again"
+
+                elif len(kwargs['text'].split('*')) == 4:
+                    otp = kwargs['text'].split('*')[3]
+                    amount = kwargs['text'].split('*')[2]
+                    trans = self.customer.get_last_trans(
+                                status=models.Transaction.PENDING)
+                    validate = self.validate_payment(otp=otp, trans_id=trans.trans_id)
+                    if validate:
+                        balance, loan = trans.mark_as_paid(amount=amount)
+                        response = "CON Deposit was successful,\n"
+                        response += "New Balance: {}".format(balance)
+                        response += "Loan: {}".format(loan)
                     else:
                         response = "END Your Deposite was not successful, please try again"
-
-            elif len(kwargs['text'].split('*')) == 4:
-                otp = kwargs['text'].split('*')[3]
-                amount = kwargs['text'].split('*')[2]
-                trans = self.customer.get_last_trans(
-                            status=models.Transaction.PENDING)
-                validate = self.validate_payment(otp=otp, trans_id=trans.trans_id)
-                if validate:
-                    balance, loan = trans.mark_as_paid(amount=amount)
-                    response = "CON Deposit was successful,\n"
-                    response += "New Balance: {}".format(balance)
-                    response += "Loan: {}".format(loan)
                 else:
-                    response = "END Your Deposite was not successful, please try again"
+                    response = "CON Please enter amount: "
             else:
-                response = "CON Please enter amount: "
-
+                response = "END You are not a registered user, please register and try again.\n"
+                
         ## register user Done
         elif kwargs['text'] == REGISTER:
             resp = models.Account.create_account(phonenumber=self.phonenumber)
