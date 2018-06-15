@@ -19,6 +19,7 @@ class Account(models.Model):
 
     @classmethod
     def get_current_customer(cls, phonenumber):
+        import pdb; pdb.set_trace()
         try:
             customer = cls.objects.get(phonenumber=phonenumber)
         except:
