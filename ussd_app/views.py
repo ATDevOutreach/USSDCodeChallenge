@@ -13,16 +13,24 @@ def process_ussd(request):
     if request.method == 'POST':
         session_id = request.POST.get('sessionId')
         service_code = request.POST.get('serviceCode')
-        phone_number = request.POST.get('phoneNumber')
+        phonenumber = request.POST.get('phoneNumber')
         text = request.POST.get('text')
 
-        africa_talking = AfricasTalkingUtils()
-        response = africa_talking.get_ussd_response(text)
+        africa_talking = AfricasTalkingUtils(phonenumber=phonenumber)
+        response = africa_talking.get_ussd_response(text=text)
     else:
-        response = "Ooops, Sorry..."
+        response = "Ooops, Sorry... #wink"
         
     return HttpResponse(response)
 
+@csrf_exempt
 def process_voice(request):
-    pass
-    # import pdb; pdb.set_trace()
+    if request.method == 'POST':
+        caller_number = request.POST.get('callerNumber')
+
+        africa_talking = AfricasTalkingUtils(phonenumber=caller_number)
+        response = africa_talking.get_voice_response()
+    else:
+        response = 'Ooops, sorry... #wink'
+
+    return HttpResponse(response, content_type='application/xml')

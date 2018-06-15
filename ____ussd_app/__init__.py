@@ -1,1 +1,0 @@
-default_app_config = 'ussd_app.apps.UssdApp'

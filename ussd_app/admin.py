@@ -10,5 +10,5 @@ class AccountAdmin(admin.ModelAdmin):
 admin.site.register(models.Account, AccountAdmin)
 
 class TransactionAdmin(admin.ModelAdmin):
-    list_display = ['account', 'type', 'amount', 'status']
+    list_display = ['account', 'type', 'amount', 'status', 'trans_id']
 admin.site.register(models.Transaction, TransactionAdmin)
