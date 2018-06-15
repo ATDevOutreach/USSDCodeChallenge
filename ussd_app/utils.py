@@ -179,6 +179,7 @@ class AfricasTalkingUtils:
             response = "CON You selected a wrong option, please try again\n"
             response += "1. My Account \n"
             response += "2. My Phone Number \n"
+            response += "Your Last Input was {} \n".format(text)
         return response
 
 ussd=AfricasTalkingUtils()
