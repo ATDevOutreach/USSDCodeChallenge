@@ -35,11 +35,11 @@ class Account(models.Model):
     
     @classmethod
     def create_account(cls, phonenumber):
-        check = cls.objects.exists(phonenumber=kwargs['phonenumber'])
+        check = cls.objects.exists(phonenumber=phonenumber)
         if check:
             return 'Account already exist'
         else:
-            cls.objects.create(phonenumber=kwargs['phonenumber'])
+            cls.objects.create(phonenumber=phonenumber)
             return 'Your phone number number has been successfully registerd'
         pass
 
