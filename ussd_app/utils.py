@@ -32,12 +32,15 @@ class AfricasTalkingUtils:
         #Specify your credentials
         self.username = "sandbox"
         self.apiKey   = "93c1f491be8e3480265075a1b207cefc7601c36e06d66cc1a178aba7df633832"
-        self.phonenumber = kwargs.get('phonenumber')
-        self.callerNumber = kwargs.get('callerNumber')
-        self.is_active = kwargs.get('isActive')
-        self.duration_in_seconds = kwargs.get('durationInSeconds')
-        self.currency_code = kwargs.get('currencyCode')
-        self.amount = kwargs.get('amount')
+        self.phonenumber = kwargs.get('phoneNumber', [None])[0]
+        self.callerNumber = kwargs.get('callerNumber', [None])[0]
+        self.is_active = kwargs.get('isActive', [None])[0]
+        self.duration_in_seconds = kwargs.get('du=rationInSeconds', [None])[0]
+        self.currency_code = kwargs.get('currencyCode', [None])[0]
+        self.amount = kwargs.get('amount', [None])[0]
+        self.session_id = kwargs.get('sessionId', [None])[0]
+        self.service_code = kwargs.get('serviceCode', [None])[0]
+        self.text = kwargs.get('text', [None])[0]
 
         self.customer = models.Account.get_current_customer(kwargs.get('phonenumber'))
         #Create an instance of our awesome gateway class and pass your credentials
@@ -106,6 +109,7 @@ class AfricasTalkingUtils:
         pass
 
     def handle_calls(self, **kwargs):
+        import pdb; pdb.set_trace()
         duration     = self.duration_in_seconds
         try:
             if self.is_active == '1': #make the call when isActive is 1
@@ -128,40 +132,35 @@ class AfricasTalkingUtils:
         except:
             print 'exception',duration
             
-
-    def ussd(self, **kwargs):
-        pass
-        # import pdb; pdb.set_trace()
-
     def get_ussd_response(self, **kwargs):
         # main menu
-        if kwargs['text'] == "":
+        if self.text == "":
             response = "CON WELCOME, What would you want to check. \n"
             response += "1. My Cooperative \n"
             response += "2. Wazobia Loans \n"
-        elif kwargs['text'] == MY_COPERATIVE:
+            response += "3. Join Agbetuntun \n"
+            response += "4. Request a Call \n"
+        elif self.text == MY_COPERATIVE:
             response = "CON What would you like to do in You Cooperative account. \n"
             response += "1. Check Balance \n"
             response += "2. Accept Loan \n"
             response += "3. Make Deposit \n"
-        elif kwargs['text'] == WAZOBIA_LOANS:
+        elif self.text == WAZOBIA_LOANS:
             response = "CON WELCOME to Wazobia Loans \n"
             response += "1. Register \n"
             response += "2. Repay Loan \n"
             response += "3. Make Deposit \n"
             response += "4. Request Loan \n"
             response += "5. Request a call \n"
-        elif kwargs['text'] == JOIN_AGBETUNTU:
-            response = "CON Welcome to Agbetuntu"
         
-        # elif kwargs['text'] == REQUEST_A_CALL or kwargs['text'] == REQUEST_A_CALL_2:
+        # elif self.text == REQUEST_A_CALL or self.text == REQUEST_A_CALL_2:
         #     # trigger call api
         #     response = "Your Request has been recorded, An agent will call soon! #CHEERS "
-        elif kwargs['text'].startswith(REQUEST_LOAN):
+        elif self.text.startswith(REQUEST_LOAN):
             # request a loan
             if self.customer:
-                if len(kwargs['text'].split('*')) == 3:
-                    amount=kwargs['text'].split('*')[2]
+                if len(self.text.split('*')) == 3:
+                    amount=self.text.split('*')[2]
                     response = "END An Agent will process your request and get back to you by text, \n"
                     response += "Enjoy Yourself!"
                     models.Transaction.record(
@@ -175,11 +174,11 @@ class AfricasTalkingUtils:
             else:
                 response = "END You are not a registered user, please register and try again.\n"
                 
-        elif kwargs['text'].startswith(REQUEST_LOAN_2):
+        elif self.text.startswith(REQUEST_LOAN_2):
             if self.customer:
-                if len(kwargs['text'].split('*')) == 3:
+                if len(self.text.split('*')) == 3:
                     narration = 'Loan from Wazobia group'
-                    access_code=kwargs['text'].split('*')[2]
+                    access_code=self.text.split('*')[2]
                     trans = models.Transaction.check_loan_validity(
                                             access_code=access_code,
                                             phonenumber=self.phonenumber)
@@ -209,7 +208,7 @@ class AfricasTalkingUtils:
                     
         # sub menu
         ## check balance Done
-        elif kwargs['text'] == CHECK_BALANCE :
+        elif self.text == CHECK_BALANCE :
             # return user balance
             if self.customer:
                 response = "CON Balance: {}\n".format(self.customer.balance)
@@ -219,10 +218,10 @@ class AfricasTalkingUtils:
                 
 
         ## make deposit Done
-        elif kwargs['text'].startswith(MAKE_DEPOSIT):
+        elif self.text.startswith(MAKE_DEPOSIT):
             if self.customer:
-                if len(kwargs['text'].split('*')) == 3:
-                    amount=kwargs['text'].split('*')[2] 
+                if len(self.text.split('*')) == 3:
+                    amount=self.text.split('*')[2] 
                     if self.customer:
                         narration = 'Deposit by {}'.format(self.customer.phonenumber)
                         deposit = self.bank_checkout(
@@ -243,9 +242,9 @@ class AfricasTalkingUtils:
                         else:
                             response = "END Your Deposite was not successful, please try again"
 
-                elif len(kwargs['text'].split('*')) == 4:
-                    otp = kwargs['text'].split('*')[3]
-                    amount = kwargs['text'].split('*')[2]
+                elif len(self.text.split('*')) == 4:
+                    otp = self.text.split('*')[3]
+                    amount = self.text.split('*')[2]
                     trans = self.customer.get_last_trans(
                                 status=models.Transaction.PENDING)
                     validate = self.validate_payment(otp=otp, trans_id=trans.trans_id)
@@ -260,19 +259,28 @@ class AfricasTalkingUtils:
                     response = "CON Please enter amount: "
             else:
                 response = "END You are not a registered user, please register and try again.\n"
-                
         ## register user Done
-        elif kwargs['text'] == REGISTER:
+        elif self.text == REGISTER or self.text == JOIN_AGBETUNTU:
+            suffix = ''
+            balance = '0.00'
+            response = ''
             resp = models.Account.create_account(phonenumber=self.phonenumber)
-            response = "END {}\n".format(resp)
-            response += "Balance: {} 0.00\n".format(CURRENCY)
+            if 'exist' in resp:
+                suffix = 'END '
+                balance = self.customer.balance
+            else:
+                response += "END Welcome to Agbetuntu \n"
+            response += "{}{} \n".format(suffix, resp)
+            response += "Balance: {} {}\n".format(CURRENCY, balance)
+        elif self.text == REQUEST_A_CALL or self.text == REQUEST_A_CALL_2:
+            response = self.handle_calls()
         else:
             response = "CON You selected a wrong option, please try again\n"
-            response += "Your Last Input was {} \n".format(kwargs['text'])
+            response += "Your Last Input was {} \n".format(self.text)
         return response
 
-    def get_voice_response(self, **kwargs):
-        response = self.handle_calls()
+    # def get_voice_response(self, **kwargs):
+        
 # ussd=AfricasTalkingUtils()
 # ussd.handle_calls()
 pass

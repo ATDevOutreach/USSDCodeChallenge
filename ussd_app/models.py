@@ -18,14 +18,6 @@ class Account(models.Model):
         return "{} with balance {}".format(self.phonenumber, self.balance)
 
     @classmethod
-    def check_balance(cls, phonenumber):
-        try:
-            resp = cls.objects.filter(phonenumber=phonenumber).first().balance
-        except:
-            resp = ''
-        return 
-
-    @classmethod
     def get_current_customer(cls, phonenumber):
         try:
             customer = cls.objects.get(phonenumber=phonenumber)
@@ -49,12 +41,6 @@ class Account(models.Model):
         else:
             trans = self.transaction.last()
         return trans
-# class Coperative(models.Model):
-#     name = models.CharField(max_length=30,null=True)
-#     phonenumber = models.CharField(max_length=20,null=True)
-#     city = models.CharField(max_length=30,null=True)
-#     reg_date=models.DateField(auto_now_add=True)
-#     level = models.IntegerField(null=True)
 
 class Transaction(models.Model):
     LOAN = 'loan'
