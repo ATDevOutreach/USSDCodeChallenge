@@ -35,13 +35,12 @@ class Account(models.Model):
     
     @classmethod
     def create_account(cls, phonenumber):
-        check = cls.objects.exists(phonenumber=phonenumber)
+        check = cls.objects.filter(phonenumber=phonenumber).exists()
         if check:
-            return 'Account already exist'
+            return 'Account already exist. \n'
         else:
             cls.objects.create(phonenumber=phonenumber)
             return 'Your phone number number has been successfully registerd'
-        pass
 
     def get_last_trans(self, **kwargs):
         # import pdb; pdb.set_trace()

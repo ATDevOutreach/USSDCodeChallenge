@@ -213,7 +213,7 @@ class AfricasTalkingUtils:
             # return user balance
             if self.customer:
                 response = "CON Balance: {}\n".format(self.customer.balance)
-                response = "Loan: {}\n".format(self.customer.balance)
+                response += "Loan: {}\n".format(self.customer.balance)
             else:
                 response = "END You are not a registered user, please register and try again.\n"
                 
@@ -264,8 +264,8 @@ class AfricasTalkingUtils:
         ## register user Done
         elif kwargs['text'] == REGISTER:
             resp = models.Account.create_account(phonenumber=self.phonenumber)
-            response = "END \n".format(resp)
-            response = "Balance: {} 0.00".format(CURRENCY)
+            response = "END {}\n".format(resp)
+            response += "Balance: {} 0.00\n".format(CURRENCY)
         else:
             response = "CON You selected a wrong option, please try again\n"
             response += "Your Last Input was {} \n".format(kwargs['text'])
