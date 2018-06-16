@@ -189,7 +189,7 @@ class AfricasTalkingUtils:
                             response = "END Your Loan Deposit is being processed. You will receive it shortly. \r\n"
                             response += "Balance: {} \r\n".format(balance)
                             response += "Loan: {} \r\n".format(loan)
-                            response += "Enjoy Yourself!"
+                            response += "Enjoy Yourself! \r\n"
                         else:
                             response = "END Your Request was not successful \r\n"
                             response += "Please try again later {} \r\n".format(balance)
@@ -233,7 +233,7 @@ class AfricasTalkingUtils:
                             )
                             response = "CON Please enter OTP sent to your phone,\r\n";
                         else:
-                            response = "END Your Deposite was not successful, please try again"
+                            response = "END Your Deposite was not successful, please try again \r\n"
 
                 elif len(self.text.split('*')) == 4:
                     otp = self.text.split('*')[3]
@@ -245,11 +245,11 @@ class AfricasTalkingUtils:
                         balance, loan = trans.mark_as_paid(amount=amount)
                         response = "END Deposit was successful,\r\n"
                         response += "New Balance: {}\r\n".format(balance)
-                        response += "Loan: {}".format(loan)
+                        response += "Loan: {} \r\n".format(loan)
                     else:
-                        response = "END Your Deposite was not successful, please try again"
+                        response = "END Your Deposite was not successful, please try again \r\n"
                 else:
-                    response = "CON Please enter amount: "
+                    response = "CON Please enter amount: \r\n"
             else:
                 response = "END You are not a registered user, please register and try again.\r\n"
 
