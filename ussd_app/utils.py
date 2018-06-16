@@ -41,7 +41,6 @@ class AfricasTalkingUtils:
         self.session_id = kwargs.get('sessionId', [None])[0]
         self.service_code = kwargs.get('serviceCode', [None])[0]
         self.text = kwargs.get('text')[0]
-        # import pdb; pdb.set_trace()
 
         self.customer = models.Account.get_current_customer(self.phonenumber)
         #Create an instance of our awesome gateway class and pass your credentials
@@ -218,7 +217,6 @@ class AfricasTalkingUtils:
                     amount=self.text.split('*')[2] 
                     if self.customer:
                         narration = 'Deposit by {}'.format(self.customer.phonenumber)
-                        import pdb; pdb.set_trace()
                         deposit = self.bank_checkout(
                                     amount=amount, 
                                     narration=narration,
