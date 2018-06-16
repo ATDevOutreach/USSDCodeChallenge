@@ -26,21 +26,48 @@ class Account(models.Model):
         return customer
     
     @classmethod
-    def create_account(cls, phonenumber):
+    def create_account(cls, phonenumber, sort_code=None, account_number=None, check_status=True):
         check = cls.objects.filter(phonenumber=phonenumber).exists()
         if check:
-            return 'Account already exist. \n'
+            return 'Account already exist. \n', False
         else:
-            cls.objects.create(phonenumber=phonenumber)
-            return 'Your phone number number has been successfully registerd'
+            if not check_status:
+                cls.objects.create(phonenumber=phonenumber)
+                return 'Your phone number number has been successfully registerd', True
+            return 'Does not exist', True
 
     def get_last_trans(self, **kwargs):
-        # import pdb; pdb.set_trace()
         if kwargs['status'] == Transaction.PENDING:
             trans = self.transaction.filter(status=Transaction.PENDING).last()
         else:
             trans = self.transaction.last()
         return trans
+    
+    def settle_loan(self):
+        if self.balance > self.loan and self.loan > 0:
+            self.balance -= self.loan
+            self.loan = 0
+            self.save()
+            response = "END Loan Repaid was successful,\n"
+            response += "New Balance: {}\n".format(self.balance)
+            response += "Loan: {}".format(self.loan)
+        elif self.loan == 0:
+            response = "END You have no loan to pay back,\n"
+            response += "Balance: {}\n".format(self.balance)
+            response += "Loan: {}".format(self.loan)
+        elif self.balance > 0 and self.loan > self.balance:
+            self.loan -= self.balance
+            self.balance = 0
+            self.save()
+            response = "END Loan Repaid was successful,\n"
+            response += "New Balance: {}\n".format(self.balance)
+            response += "Loan: {}".format(self.loan)
+        else:
+            response = "END You current balance can not settle your debt,\n"
+            response += "Please Deposit in your account \n"
+            response += "New Balance: {}\n".format(self.balance)
+            response += "Loan: {}".format(self.loan)
+        return response
 
 class Transaction(models.Model):
     LOAN = 'loan'
@@ -111,7 +138,6 @@ class Transaction(models.Model):
         return self.account.balance, self.account.loan
 
     def received_loan(self, **kwargs):
-        import pdb; pdb.set_trace()
         self.status = self.APPROVED
         self.save()
         self.account.loan += self.amount
