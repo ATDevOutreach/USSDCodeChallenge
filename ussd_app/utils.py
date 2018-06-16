@@ -40,9 +40,10 @@ class AfricasTalkingUtils:
         self.amount = kwargs.get('amount', [None])[0]
         self.session_id = kwargs.get('sessionId', [None])[0]
         self.service_code = kwargs.get('serviceCode', [None])[0]
-        self.text = kwargs.get('text')[0]
-
+        self.text = kwargs['text'][0]
+        # import pdb; pdb.set_trace()
         print(kwargs)
+        print(self.__dict__)
 
         self.customer = models.Account.get_current_customer(self.phonenumber)
         #Create an instance of our awesome gateway class and pass your credentials
