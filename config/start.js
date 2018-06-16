@@ -1,19 +1,19 @@
 const mongoose = require('mongoose');
 
-// // import environmental variables from our variables.env file
-// require('dotenv').config({ path: 'variables.env' });
+// import environmental variables from our variables.env file
+require('dotenv').config({ path: 'variables.env' });
 
-// // Connect to our Database and handle any bad connections
-// mongoose.connect(process.env.DATABASE).then(()=>{
-//   console.log('connection to DB successful')
-// }).catch(err=>{
-//   console.error(`Error connecting to DB→ ${err.message}`)
-// });
-// mongoose.Promise = global.Promise; 
+// Connect to our Database and handle any bad connections
+mongoose.connect(process.env.DATABASE).then(()=>{
+  console.log('connection to DB successful')
+}).catch(err=>{
+  console.error(`Error connecting to DB→ ${err.message}`)
+});
+mongoose.Promise = global.Promise; 
 
-// mongoose.connection.on('error', (err) => {
-//   console.error(`Error connecting to DB→ ${err.message}`);
-// });
+mongoose.connection.on('error', (err) => {
+  console.error(`Error connecting to DB→ ${err.message}`);
+});
 
 
 // Start our app!
@@ -24,4 +24,3 @@ const server = app.listen(app.get('port'), () => {
 });
 
 // process.on('SIGINT', () => { console.log("Bye bye!"); process.exit(); });
-
