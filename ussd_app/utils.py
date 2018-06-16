@@ -1,5 +1,8 @@
-from AfricasTalkingGateway import AfricasTalkingGateway, AfricasTalkingGatewayException
+import os 
+
 from . import models
+
+from AfricasTalkingGateway import AfricasTalkingGateway, AfricasTalkingGatewayException
 
 ## CONSTANT
 PRODUCT_NAME = 'wazobia'
@@ -31,7 +34,7 @@ class AfricasTalkingUtils:
     def __init__(self, **kwargs):
         #Specify your credentials
         self.username = "sandbox"
-        self.apiKey   = "93c1f491be8e3480265075a1b207cefc7601c36e06d66cc1a178aba7df633832"
+        self.apiKey   = os.environ.get('API_KEY')
         self.phonenumber = kwargs.get('phoneNumber', [None])[0]
         self.caller_number = kwargs.get('callerNumber', [None])[0]
         self.is_active = kwargs.get('isActive', [None])[0]
@@ -300,9 +303,3 @@ class AfricasTalkingUtils:
             response = "CON You selected a wrong option, please try again\r\n"
             response += "Your Last Input was {} \r\n".format(self.text)
         return response
-
-    # def get_voice_response(self, **kwargs):
-        
-# ussd=AfricasTalkingUtils()
-# ussd.handle_calls()
-pass

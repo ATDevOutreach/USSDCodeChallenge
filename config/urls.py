@@ -19,5 +19,6 @@ from ussd_app import views
 
 urlpatterns = [
     url(r'^$', views.process_ussd, name="process_ussd"),
+    url(r'^process-voice/$', views.process_voice, name="process_voice"),
     url(r'^admin/', admin.site.urls),
 ]

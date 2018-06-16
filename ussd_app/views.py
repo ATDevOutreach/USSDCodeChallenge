@@ -11,12 +11,6 @@ from utils import AfricasTalkingUtils
 @csrf_exempt
 def process_ussd(request):
     if request.method == 'POST':
-        # session_id = request.POST.get('sessionId')
-        # service_code = request.POST.get('serviceCode')
-        # phonenumber = request.POST.get('phoneNumber')
-        # text = request.POST.get('text')
-
-        print(request.POST.__dict__)
         africa_talking = AfricasTalkingUtils(**request.POST)
         response = africa_talking.get_ussd_response()
     else:
@@ -27,10 +21,8 @@ def process_ussd(request):
 @csrf_exempt
 def process_voice(request):
     if request.method == 'POST':
-        # caller_number = request.POST.get('callerNumber')
-
         africa_talking = AfricasTalkingUtils(**request.POST)
-        response = africa_talking.get_voice_response()
+        response = africa_talking.handle_calls()
     else:
         response = 'Ooops, sorry... #wink'
 
