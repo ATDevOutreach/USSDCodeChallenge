@@ -207,7 +207,7 @@ class AfricasTalkingUtils:
             # return user balance
             if self.customer:
                 response = "END Balance: {}\r\n".format(self.customer.balance)
-                response += "Loan: {}\r\n".format(self.customer.balance)
+                response += "Loan: {}\r\n".format(self.customer.loan)
             else:
                 response = "END You are not a registered user, please register and try again.\r\n"
                 
