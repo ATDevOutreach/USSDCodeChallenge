@@ -3,4 +3,4 @@
 venv
 backup
 *db.sqlite3
-startup.sh
+start_app.sh
