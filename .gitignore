@@ -1,0 +1,6 @@
+.pyc
+*.pyc
+venv
+backup
+*db.sqlite3
+start_app.sh
