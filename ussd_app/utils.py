@@ -40,7 +40,7 @@ class AfricasTalkingUtils:
         self.amount = kwargs.get('amount', [None])[0]
         self.session_id = kwargs.get('sessionId', [None])[0]
         self.service_code = kwargs.get('serviceCode', [None])[0]
-        self.text = kwargs['text'][0]
+        self.text = kwargs.get('text')[0]
         # import pdb; pdb.set_trace()
 
         self.customer = models.Account.get_current_customer(self.phonenumber)
@@ -135,30 +135,30 @@ class AfricasTalkingUtils:
     def get_ussd_response(self, **kwargs):
         # main menu
         if self.text == "":
-            response = "CON WELCOME, What would you want to check. \n"
-            response += "1. My Cooperative \n"
-            response += "2. Wazobia Loans \n"
-            response += "3. Join Agbetuntun \n"
-            response += "4. Request a Call \n"
+            response = "CON WELCOME, What would you want to check. \r\n"
+            response += "1. My Cooperative \r\n"
+            response += "2. Wazobia Loans \r\n"
+            response += "3. Join Agbetuntun \r\n"
+            response += "4. Request a Call \r\n"
         elif self.text == MY_COPERATIVE:
-            response = "CON What would you like to do in You Cooperative account. \n"
-            response += "1. Check Balance \n"
-            response += "2. Accept Loan \n"
-            response += "3. Make Deposit \n"
+            response = "CON What would you like to do in You Cooperative account. \r\n"
+            response += "1. Check Balance \r\n"
+            response += "2. Accept Loan \r\n"
+            response += "3. Make Deposit \r\n"
         elif self.text == WAZOBIA_LOANS:
-            response = "CON WELCOME to Wazobia Loans \n"
-            response += "1. Register \n"
-            response += "2. Repay Loan \n"
-            response += "3. Make Deposit \n"
-            response += "4. Request Loan \n"
-            response += "5. Request a call \n"
+            response = "CON WELCOME to Wazobia Loans \r\n"
+            response += "1. Register \r\n"
+            response += "2. Repay Loan \r\n"
+            response += "3. Make Deposit \r\n"
+            response += "4. Request Loan \r\n"
+            response += "5. Request a call \r\n"
         
         elif self.text.startswith(REQUEST_LOAN):
             # request a loan
             if self.customer:
                 if len(self.text.split('*')) == 3:
                     amount=self.text.split('*')[2]
-                    response = "END An Agent will process your request and get back to you by text, \n"
+                    response = "END An Agent will process your request and get back to you by text, \r\n"
                     response += "Enjoy Yourself!"
                     models.Transaction.record(
                                 account=self.customer,
@@ -167,9 +167,9 @@ class AfricasTalkingUtils:
                                 amount=amount
                             )
                 else:
-                    response = "CON Please specify the amount for the loan: \n"
+                    response = "CON Please specify the amount for the loan: \r\n"
             else:
-                response = "END You are not a registered user, please register and try again.\n"
+                response = "END You are not a registered user, please register and try again.\r\n"
                 
         elif self.text.startswith(REQUEST_LOAN_2):
             if self.customer:
@@ -187,30 +187,30 @@ class AfricasTalkingUtils:
                         pay_status = self.pay_customers(recipients_list=recipients_list)
                         if pay_status:
                             balance, loan = trans.received_loan()
-                            response = "END Your Loan Deposit is being processed. You will receive it shortly. \n"
-                            response += "Balance: {} \n".format(balance)
-                            response += "Loan: {} \n".format(loan)
+                            response = "END Your Loan Deposit is being processed. You will receive it shortly. \r\n"
+                            response += "Balance: {} \r\n".format(balance)
+                            response += "Loan: {} \r\n".format(loan)
                             response += "Enjoy Yourself!"
                         else:
-                            response = "END Your Request was not successful \n"
-                            response += "Please try again later {} \n".format(balance)
+                            response = "END Your Request was not successful \r\n"
+                            response += "Please try again later {} \r\n".format(balance)
                     else:
-                        response = "END Your Access Code is invalid.\n"
-                        response += "Please try again.\n"
+                        response = "END Your Access Code is invalid.\r\n"
+                        response += "Please try again.\r\n"
                         
                 else:
-                    response = "CON Please enter your loan access code to accept the loan requested.\n"
+                    response = "CON Please enter your loan access code to accept the loan requested.\r\n"
             else:
-                response = "END You are not a registered user, please register and try again.\n"
+                response = "END You are not a registered user, please register and try again.\r\n"
                     
         # sub menu
         elif self.text == CHECK_BALANCE :
             # return user balance
             if self.customer:
-                response = "END Balance: {}\n".format(self.customer.balance)
-                response += "Loan: {}\n".format(self.customer.balance)
+                response = "END Balance: {}\r\n".format(self.customer.balance)
+                response += "Loan: {}\r\n".format(self.customer.balance)
             else:
-                response = "END You are not a registered user, please register and try again.\n"
+                response = "END You are not a registered user, please register and try again.\r\n"
                 
         elif self.text.startswith(MAKE_DEPOSIT) or self.text.startswith(MAKE_DEPOSIT_2):
             if self.customer:
@@ -232,7 +232,7 @@ class AfricasTalkingUtils:
                                 status=models.Transaction.PENDING,
                                 amount=amount
                             )
-                            response = "CON Please enter OTP sent to your phone,\n";
+                            response = "CON Please enter OTP sent to your phone,\r\n";
                         else:
                             response = "END Your Deposite was not successful, please try again"
 
@@ -244,55 +244,55 @@ class AfricasTalkingUtils:
                     validate = self.validate_payment(otp=otp, trans_id=trans.trans_id)
                     if validate:
                         balance, loan = trans.mark_as_paid(amount=amount)
-                        response = "END Deposit was successful,\n"
-                        response += "New Balance: {}\n".format(balance)
+                        response = "END Deposit was successful,\r\n"
+                        response += "New Balance: {}\r\n".format(balance)
                         response += "Loan: {}".format(loan)
                     else:
                         response = "END Your Deposite was not successful, please try again"
                 else:
                     response = "CON Please enter amount: "
             else:
-                response = "END You are not a registered user, please register and try again.\n"
+                response = "END You are not a registered user, please register and try again.\r\n"
 
         elif self.text.startswith(REGISTER) or self.text.startswith(JOIN_AGBETUNTU):
             balance = '0.00'
             resp, check_status = models.Account.create_account(phonenumber=self.phonenumber, check_status=True)
             if check_status == False:
                 balance = self.customer.balance
-                response = "END {} \n".format(resp)
-                response += "Balance: {} {}\n".format(CURRENCY, self.customer.balance)
-                response += "Loan: {} {}\n".format(CURRENCY, self.customer.loan)
+                response = "END {} \r\n".format(resp)
+                response += "Balance: {} {}\r\n".format(CURRENCY, self.customer.balance)
+                response += "Loan: {} {}\r\n".format(CURRENCY, self.customer.loan)
             else:
                 if(len(self.text.split('*')) == 3) and self.text[0] == JOIN_AGBETUNTU:
                     sort_code = self.text.split('*')[1]
                     account_number = self.text.split('*')[2]
                     resp, check_status = models.Account.create_account(self.phonenumber, 
                         sort_code, account_number, check_status=False)
-                    response = "END Welcome to Agbetuntu \n"
-                    response += "{}\n".format(resp)
-                    response += "Balance: 0.00\n".format(CURRENCY)
-                    response += "Loan: 0.00\n".format(CURRENCY)
+                    response = "END Welcome to Agbetuntu \r\n"
+                    response += "{}\r\n".format(resp)
+                    response += "Balance: 0.00\r\n".format(CURRENCY)
+                    response += "Loan: 0.00\r\n".format(CURRENCY)
                 elif(len(self.text.split('*')) == 2) and self.text[0] == REGISTER.split('*')[0]:
-                    response += "Please enter your account number 1 \n"
+                    response += "Please enter your account number 1 \r\n"
                 elif (len(self.text.split('*')) == 4) and self.text[0] == REGISTER.split('*')[0]:
                     sort_code = self.text.split('*')[2]
                     account_number = self.text.split('*')[3]
                     resp, check_status = models.Account.create_account(self.phonenumber, 
                         sort_code, account_number, check_status=False)
-                    response = "END Welcome to Agbetuntu \n"
-                    response += "{}\n".format(resp)
-                    response += "Balance: 0.00\n".format(CURRENCY)
-                    response += "Loan: 0.00\n".format(CURRENCY)
+                    response = "END Welcome to Agbetuntu \r\n"
+                    response += "{}\r\n".format(resp)
+                    response += "Balance: 0.00\r\n".format(CURRENCY)
+                    response += "Loan: 0.00\r\n".format(CURRENCY)
                 else:
-                    response = "Please enter your bank sort code \n"
+                    response = "Please enter your bank sort code \r\n"
 
         elif self.text == REQUEST_A_CALL or self.text == REQUEST_A_CALL_2:
             response = self.handle_calls()
         elif self.text == REPAY_LOAN:
             response = self.customer.settle_loan()
         else:
-            response = "CON You selected a wrong option, please try again\n"
-            response += "Your Last Input was {} \n".format(self.text)
+            response = "CON You selected a wrong option, please try again\r\n"
+            response += "Your Last Input was {} \r\n".format(self.text)
         return response
 
     # def get_voice_response(self, **kwargs):
