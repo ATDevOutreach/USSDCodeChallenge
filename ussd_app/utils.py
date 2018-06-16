@@ -263,8 +263,10 @@ class AfricasTalkingUtils:
                 response += "Balance: {} {}\r\n".format(CURRENCY, self.customer.balance)
                 response += "Loan: {} {}\r\n".format(CURRENCY, self.customer.loan)
             else:
-                if (len(self.text.split('*')) == 2) and self.text[0] == JOIN_AGBETUNTU:
-                    response += "Please enter your account number 1 \r\n"
+                if (len(self.text.split('*')) == 1) and self.text[0] == JOIN_AGBETUNTU:
+                    response = "CON Please enter your bank sort code \r\n"
+                elif (len(self.text.split('*')) == 2) and self.text[0] == JOIN_AGBETUNTU:
+                    response = "CON Please enter your account number: \r\n"
                 elif(len(self.text.split('*')) == 3) and self.text[0] == JOIN_AGBETUNTU:
                     sort_code = self.text.split('*')[1]
                     account_number = self.text.split('*')[2]
@@ -274,8 +276,10 @@ class AfricasTalkingUtils:
                     response += "{}\r\n".format(resp)
                     response += "Balance: 0.00\r\n".format(CURRENCY)
                     response += "Loan: 0.00\r\n".format(CURRENCY)
+                elif(len(self.text.split('*')) == 3) and self.text[0] == REGISTER.split('*')[0]:
+                    response = "CON Please enter your account number: \r\n"
                 elif(len(self.text.split('*')) == 2) and self.text[0] == REGISTER.split('*')[0]:
-                    response += "Please enter your account number 1 \r\n"
+                    response = "CON Please enter your bank sort code \r\n"
                 elif (len(self.text.split('*')) == 4) and self.text[0] == REGISTER.split('*')[0]:
                     sort_code = self.text.split('*')[2]
                     account_number = self.text.split('*')[3]
@@ -286,7 +290,8 @@ class AfricasTalkingUtils:
                     response += "Balance: 0.00\r\n".format(CURRENCY)
                     response += "Loan: 0.00\r\n".format(CURRENCY)
                 else:
-                    response = "Please enter your bank sort code \r\n"
+                    response = "END Registration failed, \r\n"
+                    response += "Try again later \r\n"
 
         elif self.text == REQUEST_A_CALL or self.text == REQUEST_A_CALL_2:
             response = self.handle_calls()
