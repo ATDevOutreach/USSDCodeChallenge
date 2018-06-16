@@ -263,7 +263,10 @@ class AfricasTalkingUtils:
                 response += "Balance: {} {}\r\n".format(CURRENCY, self.customer.balance)
                 response += "Loan: {} {}\r\n".format(CURRENCY, self.customer.loan)
             else:
-                if(len(self.text.split('*')) == 3) and self.text[0] == JOIN_AGBETUNTU:
+                import pdb; pdb.set_trace()
+                if (len(self.text.split('*')) == 2) and self.text[0] == JOIN_AGBETUNTU:
+                    response += "Please enter your account number 1 \r\n"
+                elif(len(self.text.split('*')) == 3) and self.text[0] == JOIN_AGBETUNTU:
                     sort_code = self.text.split('*')[1]
                     account_number = self.text.split('*')[2]
                     resp, check_status = models.Account.create_account(self.phonenumber, 
