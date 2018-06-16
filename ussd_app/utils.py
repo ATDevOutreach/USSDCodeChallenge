@@ -218,6 +218,7 @@ class AfricasTalkingUtils:
                     amount=self.text.split('*')[2] 
                     if self.customer:
                         narration = 'Deposit by {}'.format(self.customer.phonenumber)
+                        import pdb; pdb.set_trace()
                         deposit = self.bank_checkout(
                                     amount=amount, 
                                     narration=narration,

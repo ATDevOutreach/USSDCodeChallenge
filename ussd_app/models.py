@@ -32,7 +32,7 @@ class Account(models.Model):
             return 'Account already exist. \n', False
         else:
             if not check_status:
-                cls.objects.create(phonenumber=phonenumber)
+                cls.objects.create(phonenumber=phonenumber, bank_code=sort_code, account_number=account_number)
                 return 'Your phone number number has been successfully registerd', True
             return 'Does not exist', True
 
