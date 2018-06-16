@@ -17,6 +17,7 @@ def process_ussd(request):
         # text = request.POST.get('text')
 
         africa_talking = AfricasTalkingUtils(**request.POST)
+        print(request.POST)
         response = africa_talking.get_ussd_response()
     else:
         response = "Ooops, Sorry... #wink"
