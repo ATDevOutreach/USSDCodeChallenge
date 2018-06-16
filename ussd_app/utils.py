@@ -40,7 +40,7 @@ class AfricasTalkingUtils:
         self.amount = kwargs.get('amount', [None])[0]
         self.session_id = kwargs.get('sessionId', [None])[0]
         self.service_code = kwargs.get('serviceCode', [None])[0]
-        self.text = kwargs.get('text', [None])[0]
+        self.text = kwargs.get('text')[0]
 
         print(kwargs)
 
