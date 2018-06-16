@@ -42,6 +42,8 @@ class AfricasTalkingUtils:
         self.service_code = kwargs.get('serviceCode', [None])[0]
         self.text = kwargs.get('text', [None])[0]
 
+        print(kwargs)
+
         self.customer = models.Account.get_current_customer(self.phonenumber)
         #Create an instance of our awesome gateway class and pass your credentials
         self.gateway = AfricasTalkingGateway(self.username, self.apiKey)
