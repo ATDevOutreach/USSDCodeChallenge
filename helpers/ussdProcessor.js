@@ -44,7 +44,7 @@ exports.processUSSD = (body, res) => {
         let response = `CON What would you like to do
            1. My Co-operative
            2. Wazobia Loans
-           3. Join Agbebuntu
+           3. Join Agbetuntu
            4. Request a call`
         res.send(response)
         break

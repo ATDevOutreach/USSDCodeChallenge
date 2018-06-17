@@ -2,6 +2,18 @@
 ## Due: 22nd June 2018 or Earlier
 #### This code challenge is due on the 22nd of June or earlier. 
 
+
+## How to test the application
+1. Open the [africastalking sanbox simulator](https://simulator.africastalking.com:1517) in your browser.
+2. Select your country and choose a phone number on the simulator page to test application with.
+3. click on Launch
+4. Select the USSD option and used the USSD code * 384 *41919#.
+5. Interact with ussd with the appropriate response
+6. Test bank checkout with option 3[ Join Agbetuntu]
+7. Test out call/ voice service with 4
+
+**Merci!!!**
+
 ## Simple Unchanging Rules
 The code challenge is and will always be judged using the following criteria
   - A Correct fork, branch and pull request
