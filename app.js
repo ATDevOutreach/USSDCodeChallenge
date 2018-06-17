@@ -25,7 +25,7 @@ app.use('/ussd', ussdRouter);
 
 //Handle get to /sms
 app.use(function(req, res, next) {
-  res.end('This is the sms endpoint')
+  res.end('This is the ussd endpoint')
 });
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
