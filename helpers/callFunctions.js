@@ -1,10 +1,9 @@
-exports.initiateCall = (voice, dialerNumber, destPhoneNumber, callTextResponse) => {
+exports.initiateCall = (voice, dialerNumber, destPhoneNumber, callTextResponse, res) => {
   voice.call({
     callFrom: dialerNumber, // My AT virtual number
     callTo: destPhoneNumber
   })
     .then(function (call) {
-      // persist call Info
       if (call.isActive == 1) {
         let response = '<?xml version="1.0" encoding="UTF-8"?>'
         response += '<Response>'
@@ -12,7 +11,9 @@ exports.initiateCall = (voice, dialerNumber, destPhoneNumber, callTextResponse) 
         response += '</Response>'
         res.send(response)
       }
-      console.log(...call.entries)
+      res.send(`END Call has been initiated successfully.
+      Status: ${call.entries[0].status}
+      You'd receive a call shortly.`)
     })
     .catch(function (error) {
       console.log(error.message)
