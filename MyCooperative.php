@@ -10,8 +10,7 @@
          *
          */
         public function myCooperative($details) {
-            if (count($details) == 1) {
-                
+            if (count($details) == 1) {                
                 $this->displaymenu();
             }
 
