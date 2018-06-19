@@ -5,7 +5,10 @@
         require_once('AfricasTalkingGateway.php');
         require_once('config.php');
 
-        //2. receive the POST from AT
+        // Custom classes
+        require_once('MyCooperative.php');
+
+        // Receive the POST from AT
         $sessionId     =$_POST['sessionId'];
         $serviceCode   =$_POST['serviceCode'];
         $phoneNumber   =$_POST['phoneNumber'];
@@ -27,7 +30,25 @@
 
         if ($level==0){				
             displaymenu();
-        }  
+        } 
+        
+        elseif ($level > 0) {
+            switch ($ussdString_explode[0]) {
+                case 1: 
+                    $myCooperative = new MyCooperative();
+                    $myCooperative->displaymenu();
+                    break;
+                case 2:
+                    break;
+                case 3: 
+                    break;
+                case 4:
+                    break;
+                default:
+                    $ussd_text = "Yikes! Invalid choice.";
+                    ussd_proceed($ussd_text);
+            }
+        }
     }
 
     // Main menu
