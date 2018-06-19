@@ -1,6 +1,6 @@
 <?php
     // Ensure ths code runs only after a POST from AT
-    if(!empty($_POST) && !empty($_POST['phoneNumber'])){
+    if(TRUE){
         require_once('dbConnector.php');
         require_once('AfricasTalkingGateway.php');
         require_once('config.php');
@@ -8,12 +8,19 @@
         // Custom classes
         require_once('MyCooperative.php');
         require_once('WazobiaLoans.php');
+        require_once('JoinAgbetuntu.php');
+        require_once('RequestACall.php');
 
         // Receive the POST from AT
         $sessionId     =$_POST['sessionId'];
         $serviceCode   =$_POST['serviceCode'];
         $phoneNumber   =$_POST['phoneNumber'];
         $ussdString    =$_POST['text'];
+
+        // $phoneNumber = $_GET['MSISDN'];  
+        // $sessionId = $_GET['sessionId'];  
+        // $serviceCode = $_GET['serviceCode'];  
+        // $ussdString = $_GET['text'];
 
         $level =0; 
 
@@ -46,6 +53,8 @@
                 case 3: 
                     break;
                 case 4:
+                    $requestACall = new RequestAcall();
+                    $requestACall->requestACall();
                     break;
                 default:
                     $ussd_text = "Yikes! Invalid choice.";
