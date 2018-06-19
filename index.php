@@ -7,12 +7,13 @@
 
         // Custom classes
         require_once('MyCooperative.php');
+        require_once('WazobiaLoans.php');
 
         // Receive the POST from AT
         $sessionId     =$_POST['sessionId'];
         $serviceCode   =$_POST['serviceCode'];
         $phoneNumber   =$_POST['phoneNumber'];
-        $ussdString          =$_POST['text'];
+        $ussdString    =$_POST['text'];
 
         $level =0; 
 
@@ -39,6 +40,8 @@
                     $myCooperative->myCooperative($ussdString_explode);
                     break;
                 case 2:
+                    $wazobiaLoan = new WazobiaLoans();
+                    $wazobiaLoan->wazobiaLoans($ussdString_explode);
                     break;
                 case 3: 
                     break;
