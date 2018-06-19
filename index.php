@@ -36,7 +36,7 @@
             switch ($ussdString_explode[0]) {
                 case 1: 
                     $myCooperative = new MyCooperative();
-                    $myCooperative->displaymenu();
+                    $myCooperative->myCooperative($ussdString_explode);
                     break;
                 case 2:
                     break;
