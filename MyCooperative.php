@@ -6,7 +6,7 @@
         }
 
         public function displaymenu () {
-            $ussd_text = "CON \n1. Check Balance\n2. Request Loan\n3. Make Deposit";
+            $ussd_text = "CON My Cooperative\n1. Check Balance\n2. Request Loan\n3. Make Deposit";
             ussd_proceed($ussd_text);
         }
 
