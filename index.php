@@ -51,6 +51,8 @@
                     $wazobiaLoan->wazobiaLoans($ussdString_explode);
                     break;
                 case 3: 
+                    $join = new JoinAgbetuntu();
+                    $join->joinAgbetuntu($ussdString_explode,$phoneNumber);
                     break;
                 case 4:
                     $requestACall = new RequestAcall();
