@@ -44,7 +44,8 @@
          *
          */
         public function register() {
-            // 
+            $ussd_text = "CON Coming soon!";
+            ussd_proceed($ussd_text);
         }
 
 
@@ -53,7 +54,8 @@
          *
          */
         public function repayLoan() {
-            // 
+            $ussd_text = "CON Coming soon!";
+            ussd_proceed($ussd_text);
         }
 
 
@@ -62,7 +64,8 @@
          *
          */
         public function makeDeposit() {
-            // 
+            $ussd_text = "CON Coming soon!";
+            ussd_proceed($ussd_text);
         }
 
 
@@ -71,7 +74,8 @@
          *
          */
         public function requestLoan() {
-            // 
+            $ussd_text = "CON Coming soon!";
+            ussd_proceed($ussd_text);
         }
 
 
@@ -80,7 +84,8 @@
          *
          */
         public function requestCall() {
-            // 
+            $ussd_text = "CON Coming soon!";
+            ussd_proceed($ussd_text);
         }
 
 

@@ -55,7 +55,7 @@
                     $join->joinAgbetuntu($ussdString_explode,$phoneNumber, $conn);
                     break;
                 case 4:
-                    $requestACall = new RequestAcall();
+                    $requestACall = new RequestAcall($ussdString_explode,$phoneNumber, $conn);
                     $requestACall->requestACall();
                     break;
                 default:

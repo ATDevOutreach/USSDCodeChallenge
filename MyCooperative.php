@@ -2,6 +2,7 @@
     class MyCooperative
     {
         public function __construct($details,$phone, $conne) {
+            $this->details = $details;
             $this->phone = $phone;
             $this->conne = $conne;
         }
@@ -74,7 +75,8 @@
          *
          */
         public function requestLoan() {
-            // 
+            $ussd_text = "CON Coming soon!";
+            ussd_proceed($ussd_text);
         }
 
         /*
@@ -82,7 +84,8 @@
          *
          */
         public function makeDeposit() {
-            // 
+            $ussd_text = "CON Coming soon!";
+            ussd_proceed($ussd_text);
         }
     }
 
