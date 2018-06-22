@@ -12,15 +12,15 @@
         require_once('RequestACall.php');
 
         // Receive the POST from AT
-        $sessionId     =$_POST['sessionId'];
-        $serviceCode   =$_POST['serviceCode'];
-        $phoneNumber   =$_POST['phoneNumber'];
-        $ussdString    =$_POST['text'];
+        // $sessionId     =$_POST['sessionId'];
+        // $serviceCode   =$_POST['serviceCode'];
+        // $phoneNumber   =$_POST['phoneNumber'];
+        // $ussdString    =$_POST['text'];
 
-        // $phoneNumber = $_GET['MSISDN'];  
-        // $sessionId = $_GET['sessionId'];  
-        // $serviceCode = $_GET['serviceCode'];  
-        // $ussdString = $_GET['text'];
+        $phoneNumber = $_GET['MSISDN'];  
+        $sessionId = $_GET['sessionId'];  
+        $serviceCode = $_GET['serviceCode'];  
+        $ussdString = $_GET['text'];
 
         $level =0; 
 
@@ -52,7 +52,7 @@
                     break;
                 case 3: 
                     $join = new JoinAgbetuntu();
-                    $join->joinAgbetuntu($ussdString_explode,$phoneNumber);
+                    $join->joinAgbetuntu($ussdString_explode,$phoneNumber, $conn);
                     break;
                 case 4:
                     $requestACall = new RequestAcall();
