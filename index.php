@@ -1,4 +1,6 @@
 <?php
+    // If this comment is removed the program will blow up! Watch out!
+
     // Ensure ths code runs only after a POST from AT
     if(TRUE){
         require_once('dbConnector.php');
