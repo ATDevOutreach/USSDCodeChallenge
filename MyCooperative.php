@@ -1,8 +1,9 @@
 <?php 
     class MyCooperative
     {
-        public function __construct() {
-            // 
+        public function __construct($details,$phone, $conne) {
+            $this->phone = $phone;
+            $this->conne = $conne;
         }
 
         /*
@@ -47,8 +48,25 @@
          *
          */
         public function checkBalance() {
-            $ussd_text = "END Your balance is $400,000,888";
-            ussd_proceed($ussd_text); 
+            $sql = "SELECT * FROM account WHERE phonenumber LIKE '%".$this->phone."%'ORDER BY id DESC LIMIT 1";
+            $result = $this->conne->query($sql);
+
+            $newBal = 0.00; $newLoan = 0.00;
+
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                //calculations
+                $newBal = $row["balance"];
+                $newLoan = $row["loan"];
+                
+            } else {
+                $ussd_text = "No results";
+                ussd_proceed($ussd_text);
+            }
+            
+            $ussd_text = "CON Balance: ".$newBal."\nLoan: ".$newLoan."\n";
+            ussd_proceed($ussd_text);
+            
         }
 
         /*

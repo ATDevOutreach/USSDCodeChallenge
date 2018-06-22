@@ -43,7 +43,7 @@
         elseif ($level > 0) {
             switch ($ussdString_explode[0]) {
                 case 1: 
-                    $myCooperative = new MyCooperative();
+                    $myCooperative = new MyCooperative($ussdString_explode,$phoneNumber, $conn);
                     $myCooperative->myCooperative($ussdString_explode);
                     break;
                 case 2:
