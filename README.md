@@ -6,7 +6,7 @@
 1. Open the [africastalking sanbox simulator](https://simulator.africastalking.com:1517) in your browser.
 2. Select your country and choose a phone number on the simulator page to test application with.
 3. click on Launch
-4. Select the USSD option and used the USSD code \*384\*22211#.
+4. Select the USSD option and used the USSD code \*384\*222111#.
 5. Interact with ussd with the appropriate response
 
 
