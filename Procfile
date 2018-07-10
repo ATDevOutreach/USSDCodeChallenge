@@ -1,1 +1,1 @@
-web: gunicorn ussd_app.config.wsgi --log-file -
+web: gunicorn ussd_app.ussd_app.wsgi --log-file -
