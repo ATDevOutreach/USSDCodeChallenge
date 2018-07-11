@@ -1,0 +1,1 @@
+web: gunicorn ussd_app.wsgi --log-file -
