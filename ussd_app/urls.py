@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-import core
+from core import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^ussd/$', core.views.index )
+    url(r'^ussd/$', views.handle_ussd ),
+    url(r'^voice/$', views.handle_voice ),
 ]
